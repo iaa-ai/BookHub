@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Book Instances</h1>
+    <div class="mb-3">
+        <a href="{% url 'bookinstance_add' %}" class="btn btn-primary">Add Book Instance</a>
+    </div>
+        <table class="table-author">
+        <thead>
+            <tr>
+                <th>Book Name</th>
+                <th>Borrower</th>
+                <th>Condition</th>
+                <th>Check Out</th>
+                <th>Check In</th>
+                <th>Actions</th> 
+            </tr>
+        </thead>
+        <tbody>
+            {% for instance in bookinstances %}
+            <tr>
+                <td>{{ instance.book.title }}</td>
+                <td>{{ instance.borrower }}</td>
+                <td>{{ instance.condition }}</td>
+                <td>{{ instance.check_out }}</td>
+                <td>{{ instance.check_in }}</td>
+                <td>
+                    <a href="{% url 'bookinstance_edit' instance.id %}" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'bookinstance_delete' instance.id %}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">No book instances found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div style="display: flex; justify-content: center;">
+        {% include 'includes/pagination.html' %}
+    </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>User Roles</h1>
+    <div class="mb-3">
+        <a href="" class="btn btn-primary">Add New User Role</a>
+    </div>
+    <table class="table-author">
+        <tr>
+            <th>Username</th>
+            <th>Is Staff</th>
+            <th>Joined at</th>
+            <th>Actions</th>
+        </tr>
+        {% for userp in users %}
+        <tr>
+            <td>{{ userp.user }}</td>
+            <td>{{ userp.user.is_staff }}</td>
+            <td>{{ userp.created_at }}</td>
+            <td>
+                <a href="" class="btn btn-primary">Edit</a> 
+                <a href="" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No users found.</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <div style="display: flex; justify-content: center;">
+        {% include 'includes/pagination.html' %}
+    </div>
+{% endblock %}

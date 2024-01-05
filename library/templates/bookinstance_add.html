@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<h1>Add Book Instance</h1>
+<form method="GET" action="">
+    <input type="text" name="q" placeholder="Search books...">
+    <input type="submit" value="Search">
+</form>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Add Book Instance</button>
+</form>
+{% endblock %}

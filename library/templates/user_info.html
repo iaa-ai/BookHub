@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<style>
+.center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: #ddd;
+    border-radius: 5px;
+}
+
+.profile-picture {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.username-admin {
+    font-size: 2em;
+    color: #222;
+}
+
+.username-type {
+    padding: 2px 10px;
+    border-radius: 5px;
+    border: 2px solid #3a863a;
+    color: white;
+    background-color: #4e905d;
+    margin-top: 5px;
+}
+
+.username-type-non {
+    padding: 2px 10px;
+    border-radius: 5px;
+    border: 2px solid #276691;
+    color: white;
+    background-color: #3282b8;
+    margin-top: 10px;
+}
+
+body.dark-mode .center-content {
+    background: #2d3037;
+}
+body.dark-mode .username-admin {
+    color: #fff !important;
+
+}
+
+body.dark-mode .username-type {
+    padding: 2px 10px;
+    border-radius: 5px;
+    border: 2px solid #3a863a;
+    color: white;
+    background-color: #4e905d;
+    margin-top: 10px;
+}
+</style>
+
+<div class="center-content">
+    {% if user.profile.user_image %}
+        <img src="{{ user.profile.user_image.url }}" alt="Profile Picture" class="profile-picture">
+    {% else %}
+        <img src="{% static 'image/user_logo.png' %}" alt="Profile Picture" class="profile-picture">
+    {% endif %}
+    {% if not user.is_staff %}
+        <h1 class="username-admin">{{ user.username }}</h1>
+        <p class="username-type-non">Member</p>
+    {% elif user.is_staff %}
+        <h1 class="username-admin">{{ user.username }}</h1>
+        <p class="username-type">Staff</p>
+    {% elif user.is_superuser %}
+        <p class="username-type">Superuser</p>
+    {% endif %}
+    <p>Bio: {{ user.profile.user_bio }}</p>
+    <a href="{% url 'uinfo_edit' %}" class="btn btn-primary">Edit</a>
+</div>
+{% endblock %}

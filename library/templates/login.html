@@ -1,0 +1,22 @@
+{% extends "base_login.html" %}
+{% load static %}
+{% block custom_style %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+{% block content %}
+<h1>Log In</h1>
+<form method="POST">
+    {% csrf_token %}
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username"><br />
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password">
+    {% if error %}
+    <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <br /><br />
+    <button type="submit">Login</button>
+    <br /><br />
+    <a class="register" href="{% url 'register' %}">Register</a>
+</form>
+{% endblock %}

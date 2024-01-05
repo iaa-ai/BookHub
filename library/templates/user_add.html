@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.username.label_tag }} {{ form.username }}
+    {{ form.password1.label_tag }} {{ form.password1 }}
+    {{ form.password2.label_tag }} {{ form.password2 }}
+    {{ form.is_staff.label_tag }} {{ form.is_staff }}
+    <button type="submit">Register</button>
+</form>

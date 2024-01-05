@@ -1,0 +1,3 @@
+# BookHub
+
+BookHub is a comprehensive library management system designed to simplify and enhance the process of managing and accessing a wide range of books. It provides an intuitive interface for librarians to manage book inventories and for users to discover and borrow books. With features like advanced search, user reviews, and genre categorization, BookHub makes the library experience more engaging and efficient.

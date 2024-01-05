@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <h1>Books</h1>
+    <div class="mb-3">
+        <a href="{% url 'book_add' %}" class="btn btn-primary">Add New Book</a>
+    </div>
+    <form method="GET" action="">
+        <input type="text" name="q" placeholder="Search books...">
+        <input type="submit" value="Search">
+    </form>
+    <section class="book-container">
+        <div class="grid-container">
+            {% for book in books %}
+                <div class="book-box" style="background-image: url('{% if book.image %}{{ book.image.url }}{% else %}{% static 'image/no_cover.png' %}{% endif %}');">
+                    <div class="book-name">
+                        <h2 class="sbs">{{ book.title }}</h2>
+                        <h2 class="sbs">{{ book.author.name }}</h2>
+                        <hr />
+                        <div class="bookPanel">
+                            <a href="{% url 'book_update' book.id %}" class="btn btn-primary">Edit</a>
+                            <a href="{% url 'book_delete' book.id %}" class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="book-box" style="background-image: url('{% static 'image/no_cover.png' %}');">
+                    <div class="book-name">
+                        <h2 class="sbs">No books recorded</h2>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    <div style="display: flex; justify-content: center;">
+        {% include 'includes/pagination.html' %}
+    </div>
+{% endblock %}

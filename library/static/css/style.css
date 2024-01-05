@@ -1,0 +1,260 @@
+/* style.css */
+
+h2 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+    /* padding: 10px; */
+    border-radius: 5px;
+}
+
+.pagination {
+    margin-top: 20px;
+}
+
+.step-links {
+    display: flex;
+    justify-content: space-between;
+}
+
+.step-links a {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.step-links a:hover {
+    background-color: #0056b3;
+}
+
+.current {
+    font-weight: bold;
+}
+
+.author-table, .table-author {
+    width: 80%;
+    margin: auto;
+    border-collapse: collapse;
+}
+
+.author-table th, .author-table td, .table-author th, .table-author td {
+    border: 1px solid black;  /* Change border color to black */
+    padding: 8px;
+}
+
+.author-table th, .table-author th {
+    background-color: rgba(0, 128, 0, 0.5);  /* 50% green */
+    color: black;
+}
+
+.author-table tr:nth-child(even), .table-author tr:nth-child(even) {
+    background-color: rgba(0, 128, 0, 0.1);  /* 10% green */
+}
+
+.author-table tr:nth-child(odd), .table-author tr:nth-child(odd) {
+    background-color: rgba(0, 128, 0, 0.3);  /* 30% green */
+}
+
+body.dark-mode .navbar.navbar-expand-lg.navbar-light.bg-light {
+    background-color: #333 !important;
+    color: #fff !important;
+}
+
+body.dark-mode .username {
+    color: #fff !important;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.main-content {
+    flex-grow: 1;
+}
+.footer {
+    flex-shrink: 0;
+}
+.icon-link {
+    margin: 0 10px;
+    color: #333;
+    text-decoration: none;
+}
+.icon-link:hover {
+    color: #007bff;
+}
+
+.navbar-nav .nav-item{
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.nav-top-right .nav-link-auth {
+    margin-left: 20px;
+   height: 30px;
+}
+
+/* Dark Mode */
+
+body.dark-mode a,
+body.dark-mode .navbar-brand,
+body.dark-mode .navbar-nav .nav-link{
+    background-color: #333;
+    color: #fff !important;
+    transition: all 0.3s ease-in-out;
+}
+
+body.dark-mode .navbar-brand {
+    color: #fff !important;
+    transition: all 0.3s ease-in-out;
+}
+body.dark-mode {
+    background-color: #222;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Dark Mode for footer */
+body.dark-mode footer {
+    background-color: #222;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+}
+
+body.dark-mode .footer.bg-light {
+    background-color: #222 !important;
+    color: #fff !important;
+    transition: all 0.3s ease-in-out;
+}
+
+body.dark-mode .pagination {
+    background-color: #222;
+    color: #222;
+    transition: all 0.3s ease-in-out;
+}
+
+body.dark-mode .pagination .page-link {
+    background-color: #222;
+    color: #222;
+    transition: all 0.3s ease-in-out;
+}
+
+body.dark-mode .nav-top-right .nav-link{
+    background-color: #333;
+    color: #fff !important;
+    transition: all 0.3s ease-in-out;
+}
+.book-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.book-box {
+    width: 300px;
+    margin: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    height: 400px;
+    background-size: cover;  /* This will ensure that the background image covers the full width and height */
+    background-position: center;  /* This will center the background image */
+}
+
+
+.book-box:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.book {
+    padding: 20px;
+    background-color: #f1f1f1;
+}
+
+.book-name {
+    text-align: center;
+}
+
+.book-stats {
+    margin-top: 20px;
+}
+
+.bookPanel {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bookPanel a {
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    border-color: #3498db;
+    color: #ffffff;
+}
+
+.btn-danger {
+    background-color: #f64b4b;
+    border-color: #f64b4b;
+    color: #ffffff;
+}
+
+.book-image {
+    width: 100%;
+    height: 200px;
+    object-fit:scale-down;
+}
+
+.book-box {
+    position: relative;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+}
+
+.book-name {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s;
+    border-radius: 10px;
+}
+
+.book-box:hover .book-name {
+    opacity: 1;
+    border-radius: 10px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.nav-top-right {
+    position: absolute;
+    top: 0;
+    right: 10%;
+}
+

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+<h1>Top Picks</h1>
+<table class="table-author">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Access Count</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book_instance in top_picks %}
+                {{ book_instance }}
+            <tr>
+                <td>
+                    <a href="{% url 'book-detail' book_instance.book.id %}">
+                        {{ book_instance.book.title }}
+                    </a>
+                </td>
+                <td>{{ book_instance.access_count }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
